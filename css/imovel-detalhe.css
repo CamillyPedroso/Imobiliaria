@@ -1,0 +1,850 @@
+/*
+  imovel-detalhe.css  —  v2
+  Cole em: css/imovel-detalhe.css
+  O front.css NÃO é alterado.
+*/
+
+:root {
+  --d-navy: #0b2235;
+  --d-navy-mid: #123652;
+  --d-gold: #c8a020;
+  --d-gold-lt: #d6a84f;
+  --d-gold-bg: rgba(200, 160, 32, 0.09);
+  --d-cream: #f7f4ed;
+  --d-white: #ffffff;
+  --d-border: #e8e2d8;
+  --d-muted: #6b7280;
+  --d-text: #1f2933;
+  --d-radius: 18px;
+  --d-shadow-sm: 0 4px 16px rgba(11, 34, 53, 0.07);
+  --d-shadow-md: 0 12px 36px rgba(11, 34, 53, 0.11);
+}
+
+body {
+  background: var(--d-cream);
+}
+
+/* ======================== WRAPPER ======================== */
+
+.pagina-imovel {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+/* ======================== BREADCRUMB ======================== */
+
+.breadcrumb-imovel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--d-muted);
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.breadcrumb-imovel a {
+  color: var(--d-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumb-imovel a:hover {
+  color: var(--d-gold);
+}
+.breadcrumb-imovel span {
+  color: var(--d-navy);
+  font-weight: 600;
+}
+.breadcrumb-imovel i {
+  font-size: 0.85rem;
+  opacity: 0.4;
+}
+
+/* ======================== GRID PRINCIPAL ======================== */
+
+.imovel-grid {
+  display: grid;
+  grid-template-columns: 1fr 390px;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+/* ======================== GALERIA ======================== */
+
+.imovel-col-galeria {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.galeria-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.foto-principal-wrapper {
+  position: relative;
+  border-radius: var(--d-radius);
+  overflow: hidden;
+  background: var(--d-navy);
+  aspect-ratio: 4 / 3;
+  box-shadow: var(--d-shadow-md);
+}
+
+.foto-principal {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: opacity 0.18s;
+}
+
+.nav-foto {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.96);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: var(--d-navy);
+  box-shadow: 0 4px 14px rgba(11, 34, 53, 0.2);
+  z-index: 2;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.nav-foto:hover {
+  background: var(--d-gold);
+  color: var(--d-white);
+  transform: translateY(-50%) scale(1.08);
+}
+.nav-foto.prev {
+  left: 14px;
+}
+.nav-foto.next {
+  right: 14px;
+}
+
+.contador-fotos {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  background: rgba(11, 34, 53, 0.68);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+
+.thumbs-wrapper {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.thumb {
+  width: 74px;
+  height: 56px;
+  border-radius: 9px;
+  overflow: hidden;
+  border: 2.5px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  background: var(--d-cream);
+  transition:
+    border-color 0.2s,
+    transform 0.15s;
+  flex-shrink: 0;
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.thumb.ativo {
+  border-color: var(--d-gold);
+  box-shadow: 0 0 0 2px rgba(200, 160, 32, 0.25);
+}
+.thumb:hover:not(.ativo) {
+  border-color: var(--d-navy);
+  transform: translateY(-2px);
+}
+
+.thumb-video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--d-navy);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  gap: 3px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.thumb-video .icone-play {
+  font-size: 1.35rem;
+  color: var(--d-gold-lt);
+}
+
+.galeria-sem-foto {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--d-navy), var(--d-navy-mid));
+  border-radius: var(--d-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(200, 160, 32, 0.5);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ======================== MODAL VÍDEO ======================== */
+
+.modal-video {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+.modal-video-inner {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+}
+.modal-video-inner video {
+  width: 100%;
+  border-radius: 14px;
+}
+.fechar-modal {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  opacity: 0.8;
+  line-height: 1;
+}
+.fechar-modal:hover {
+  opacity: 1;
+}
+
+/* ======================== CARD DE INFORMAÇÕES ======================== */
+
+.imovel-col-info {
+  position: sticky;
+  top: 108px;
+  background: var(--d-white);
+  border: 1px solid var(--d-border);
+  border-radius: var(--d-radius);
+  box-shadow: var(--d-shadow-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.imovel-cabecalho {
+  padding: 22px 22px 18px;
+  border-bottom: 1px solid var(--d-border);
+}
+
+.imovel-linha-topo {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.badge-tipo {
+  background: var(--d-cream);
+  border: 1px solid var(--d-border);
+  color: var(--d-navy);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.badge-operacao {
+  background: var(--d-gold);
+  color: var(--d-white);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.imovel-titulo {
+  font-family: "Cinzel", serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--d-navy);
+  line-height: 1.25;
+  margin: 0 0 10px;
+}
+.imovel-endereco {
+  font-size: 0.83rem;
+  color: var(--d-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  line-height: 1.5;
+  margin: 0;
+}
+.imovel-endereco i {
+  color: var(--d-gold);
+  font-size: 0.95rem;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.imovel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--d-border);
+}
+.tag-dado {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--d-cream);
+  border: 1px solid var(--d-border);
+  color: var(--d-navy);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: 9px;
+}
+.tag-dado i {
+  color: var(--d-gold);
+  font-size: 0.9rem;
+}
+
+.imovel-preco-box {
+  padding: 18px 22px 16px;
+  border-bottom: 1px solid var(--d-border);
+  background: var(--d-cream);
+}
+.label-preco {
+  display: block;
+  font-size: 0.66rem;
+  color: var(--d-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.imovel-preco {
+  font-family: "Cinzel", serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--d-gold);
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+
+.imovel-chamada {
+  font-size: 0.86rem;
+  color: var(--d-muted);
+  line-height: 1.65;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--d-border);
+  margin: 0;
+}
+
+.imovel-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 22px 20px;
+}
+
+.btn-whatsapp-imovel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--d-navy);
+  color: var(--d-white);
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 14px 20px;
+  border-radius: 11px;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+  border: 1px solid rgba(200, 160, 32, 0.4);
+}
+.btn-whatsapp-imovel i {
+  font-size: 1.15rem;
+  color: #25d366;
+}
+.btn-whatsapp-imovel:hover {
+  background: var(--d-navy-mid);
+  transform: translateY(-2px);
+}
+
+.btn-agendar-visita {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--d-white);
+  color: var(--d-navy);
+  border: 1.5px solid var(--d-border);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 13px 20px;
+  border-radius: 11px;
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    transform 0.15s;
+}
+.btn-agendar-visita i {
+  font-size: 1rem;
+  color: var(--d-gold);
+}
+.btn-agendar-visita:hover {
+  border-color: var(--d-gold);
+  background: var(--d-gold-bg);
+  transform: translateY(-2px);
+}
+
+.imovel-codigo {
+  text-align: center;
+  font-size: 0.74rem;
+  color: var(--d-muted);
+  padding: 4px 22px 18px;
+  letter-spacing: 0.03em;
+}
+
+/* ======================== FAIXA DE CARACTERÍSTICAS ======================== */
+
+.faixa-caracteristicas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--d-white);
+  border: 1px solid var(--d-border);
+  border-radius: var(--d-radius);
+  overflow: hidden;
+  margin-bottom: 32px;
+  box-shadow: var(--d-shadow-sm);
+}
+
+.faixa-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 20px;
+  border-right: 1px solid var(--d-border);
+  transition: background 0.2s;
+}
+.faixa-item:last-child {
+  border-right: none;
+}
+.faixa-item:hover {
+  background: var(--d-cream);
+}
+
+.faixa-icone {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--d-gold-bg);
+  border: 1px solid rgba(200, 160, 32, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.faixa-icone i {
+  font-size: 1.4rem;
+  color: var(--d-gold);
+}
+
+.faixa-valor {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--d-navy);
+  line-height: 1.1;
+}
+.faixa-label {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--d-muted);
+  margin-top: 2px;
+}
+
+/* ======================== SOBRE O IMÓVEL ======================== */
+
+.imovel-descricao {
+  background: var(--d-white);
+  border: 1px solid var(--d-border);
+  border-radius: var(--d-radius);
+  padding: 36px 40px;
+  margin-bottom: 32px;
+  box-shadow: var(--d-shadow-sm);
+}
+
+.imovel-descricao h2 {
+  font-family: "Cinzel", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--d-navy);
+  margin: 0 0 24px;
+  padding-bottom: 14px;
+  border-bottom: 3px solid var(--d-gold);
+  display: inline-block;
+}
+
+.descricao-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.descricao-texto p {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.8;
+  margin: 0 0 12px;
+}
+.descricao-texto p:last-child {
+  margin-bottom: 0;
+}
+
+.descricao-destaques {
+  background: var(--d-cream);
+  border: 1px solid var(--d-border);
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.destaques-titulo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--d-navy);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.destaques-titulo i {
+  color: var(--d-gold);
+  font-size: 1.1rem;
+}
+
+.destaques-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.destaques-lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.86rem;
+  color: var(--d-text);
+  line-height: 1.4;
+}
+.destaques-lista li i {
+  color: var(--d-gold);
+  font-size: 1rem;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+/* ======================== VOLTAR ======================== */
+
+.imovel-voltar {
+  margin-bottom: 12px;
+}
+.imovel-voltar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--d-muted);
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.imovel-voltar a:hover {
+  color: var(--d-gold);
+}
+
+/* ======================== ERRO ======================== */
+
+.imovel-erro {
+  text-align: center;
+  padding: 100px 20px;
+}
+.imovel-erro h2 {
+  font-family: "Cinzel", serif;
+  font-size: 1.5rem;
+  color: var(--d-navy);
+  margin-bottom: 16px;
+}
+.imovel-erro a {
+  color: var(--d-gold);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ======================== CTA FINAL ======================== */
+
+.cta-final-imovel {
+  background: var(--d-white);
+  border-top: 1px solid var(--d-border);
+  padding: 52px 0;
+}
+.cta-final-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+}
+.cta-final-esquerda {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+}
+
+.cta-final-icone {
+  width: 100px;
+  height: 100px;
+  border-radius: 18px;
+  background: var(--d-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid rgba(200, 160, 32, 0.3);
+  box-shadow: var(--d-shadow-md);
+}
+.cta-final-icone i {
+  font-size: 2.8rem;
+  color: var(--d-gold);
+}
+
+.cta-final-etiqueta {
+  display: inline-block;
+  color: var(--d-gold);
+  font-weight: 800;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 8px;
+}
+.cta-final-texto h2 {
+  font-family: "Cinzel", serif;
+  color: var(--d-navy);
+  font-size: clamp(1.1rem, 2vw, 1.55rem);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.cta-final-texto p {
+  color: var(--d-muted);
+  font-size: 0.86rem;
+}
+
+.cta-final-botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 260px;
+  flex-shrink: 0;
+}
+
+.cta-btn-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: var(--d-gold);
+  color: var(--d-navy);
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 15px 24px;
+  border-radius: 11px;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+  box-shadow: 0 8px 20px rgba(200, 160, 32, 0.28);
+}
+.cta-btn-whatsapp i {
+  font-size: 1.1rem;
+}
+.cta-btn-whatsapp:hover {
+  background: #b8902c;
+  transform: translateY(-2px);
+}
+
+.cta-btn-telefone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: var(--d-white);
+  color: var(--d-navy);
+  border: 1.5px solid var(--d-border);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 13px 24px;
+  border-radius: 11px;
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    transform 0.15s;
+}
+.cta-btn-telefone i {
+  font-size: 1rem;
+  color: var(--d-gold);
+}
+.cta-btn-telefone:hover {
+  border-color: var(--d-navy);
+  background: var(--d-cream);
+  transform: translateY(-2px);
+}
+
+/* ======================== FLOAT WHATSAPP ======================== */
+
+.whatsapp-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  background: #25d366;
+  color: #fff;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+  z-index: 60;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+}
+
+/* ======================== RESPONSIVO TABLET ======================== */
+
+@media (max-width: 960px) {
+  .imovel-grid {
+    grid-template-columns: 1fr;
+  }
+  .imovel-col-info {
+    position: static;
+  }
+  .faixa-caracteristicas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .faixa-item:nth-child(2) {
+    border-right: none;
+  }
+  .faixa-item:nth-child(1),
+  .faixa-item:nth-child(2) {
+    border-bottom: 1px solid var(--d-border);
+  }
+  .descricao-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .cta-final-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cta-final-botoes {
+    width: 100%;
+  }
+  .cta-btn-whatsapp,
+  .cta-btn-telefone {
+    width: 100%;
+  }
+}
+
+/* ======================== RESPONSIVO MOBILE ======================== */
+
+@media (max-width: 600px) {
+  .pagina-imovel {
+    padding: 18px 14px 48px;
+  }
+  .imovel-preco {
+    font-size: 1.5rem;
+  }
+  .imovel-titulo {
+    font-size: 1.1rem;
+  }
+  .imovel-descricao {
+    padding: 22px 18px;
+  }
+  .imovel-descricao h2 {
+    font-size: 1.15rem;
+  }
+  .faixa-caracteristicas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .thumb {
+    width: 60px;
+    height: 46px;
+  }
+  .cta-final-imovel {
+    padding: 36px 0;
+  }
+  .cta-final-esquerda {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cta-final-icone {
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+  }
+  .cta-final-icone i {
+    font-size: 2rem;
+  }
+}

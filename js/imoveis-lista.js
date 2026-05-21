@@ -8,7 +8,7 @@ function montarImagem(imovel) {
   }
 
   return `
-    <div class="sem-foto">
+    <div class="sem-foto">c
       <span>Foto em breve</span>
     </div>
   `;

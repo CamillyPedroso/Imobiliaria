@@ -4,16 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Imóveis à venda | Anselmo Pedroso Imóveis</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="../css/front.css?v=2" />
-    <link rel="stylesheet" href="../css/front.css?v=2" />
+    <link rel="stylesheet" href="../css/imoveis-page.css?v=1" />
   </head>
 
   <body>
+    <!-- ===== HEADER (idêntico ao original, sem alteração de IDs) ===== -->
     <header class="header">
       <div class="container header-content">
         <a href="../index.html" class="logo-area">
@@ -25,21 +31,18 @@
         </button>
 
         <nav class="nav" id="navMenu">
-          <a href="imoveis.html">
+          <a href="imoveis.html" class="nav-ativo">
             <i class="ri-home-4-line"></i>
             Imóveis
           </a>
-
           <a href="servicos.html">
             <i class="ri-briefcase-4-line"></i>
             Serviços
           </a>
-
           <a href="sobre.html">
             <i class="ri-user-3-line"></i>
             Sobre
           </a>
-
           <a href="contato.html">
             <i class="ri-phone-line"></i>
             Contato
@@ -58,36 +61,141 @@
     </header>
 
     <main class="pagina-imoveis">
-      <section class="hero-imoveis">
-        <p class="etiqueta">Imóveis selecionados em Guaíba</p>
-        <h1>Encontre o imóvel ideal para morar, investir ou empreender</h1>
-        <p>
-          Veja casas, terrenos e imóveis comerciais representados por Anselmo
-          Pedroso, corretor de imóveis, perito avaliador e técnico em
-          edificações.
-        </p>
+      <!-- ===== HERO MELHORADO ===== -->
+      <section class="hero-imoveis-novo">
+        <div class="container hero-imoveis-grid">
+          <!-- Coluna principal: título e subtítulo -->
+          <div class="hero-imoveis-texto">
+            <span class="etiqueta-hero">
+              <i class="ri-map-pin-2-line"></i>
+              Imóveis selecionados em Guaíba e região
+            </span>
+
+            <h1 class="hero-imoveis-titulo">
+              Encontre o imóvel ideal para morar, investir ou empreender
+            </h1>
+
+            <p class="hero-imoveis-sub">
+              Veja casas, terrenos e imóveis comerciais representados por
+              Anselmo Pedroso, corretor de imóveis, perito avaliador e técnico
+              em edificações.
+            </p>
+
+            <!-- Indicadores rápidos -->
+            <div class="hero-imoveis-chips">
+              <span><i class="ri-home-4-line"></i> Venda</span>
+              <span><i class="ri-key-line"></i> Locação</span>
+              <span><i class="ri-bar-chart-line"></i> Avaliação</span>
+              <span><i class="ri-shield-check-line"></i> CRECI ativo</span>
+            </div>
+          </div>
+
+          <!-- Card lateral de atendimento -->
+          <aside class="card-atendimento">
+            <div class="card-atendimento-header">
+              <i class="ri-customer-service-2-line"></i>
+              <span>Atendimento especializado</span>
+            </div>
+
+            <ul class="card-atendimento-lista">
+              <li>
+                <i class="ri-map-pin-line"></i>
+                <span>Porto Alegre, Guaíba e região</span>
+              </li>
+              <li>
+                <i class="ri-home-smile-line"></i>
+                <span>Venda, locação e avaliação</span>
+              </li>
+              <li>
+                <i class="ri-auction-line"></i>
+                <span>Imóveis selecionados na carteira</span>
+              </li>
+              <li>
+                <i class="ri-time-line"></i>
+                <span>Resposta rápida pelo WhatsApp</span>
+              </li>
+            </ul>
+
+            <a
+              href="https://wa.me/5551995483061"
+              target="_blank"
+              class="card-atendimento-btn"
+            >
+              <i class="ri-whatsapp-line"></i>
+              Falar com corretor
+            </a>
+          </aside>
+        </div>
       </section>
 
-      <section class="filtros-imoveis">
-        <input
-          type="text"
-          id="buscaImoveis"
-          placeholder="Buscar por bairro, rua ou código"
-        />
+      <!-- ===== FILTROS MELHORADOS ===== -->
+      <section class="filtros-imoveis-novo">
+        <div class="container">
+          <div class="filtros-inner">
+            <!-- Campo de busca com ícone -->
+            <div class="filtro-busca-wrapper">
+              <i class="ri-search-line filtro-icone-busca"></i>
+              <input
+                type="text"
+                id="buscaImoveis"
+                placeholder="Buscar por bairro, rua ou código do imóvel…"
+                class="filtro-input"
+              />
+            </div>
 
-        <select id="tipoImovel">
-          <option value="">Todos os tipos</option>
-          <option value="casa">Casa</option>
-          <option value="terreno">Terreno</option>
-          <option value="sobrado">Sobrado</option>
-          <option value="comercial">Comercial</option>
-        </select>
+            <!-- Select de tipo -->
+            <div class="filtro-select-wrapper">
+              <i class="ri-filter-3-line filtro-icone-select"></i>
+              <select id="tipoImovel" class="filtro-select">
+                <option value="">Todos os tipos</option>
+                <option value="casa">Casa</option>
+                <option value="terreno">Terreno</option>
+                <option value="sobrado">Sobrado</option>
+                <option value="comercial">Comercial</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section id="listaImoveis" class="grid-imoveis"></section>
+      <!-- ===== GRID DE IMÓVEIS (IDs originais mantidos) ===== -->
+      <section class="secao-lista-imoveis">
+        <div class="container">
+          <div id="listaImoveis" class="grid-imoveis"></div>
+        </div>
+      </section>
     </main>
 
+    <!-- ===== FOOTER SIMPLES ===== -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <img src="../img/logo.png" alt="Logo Anselmo Pedroso Imobiliária" />
+        <p>© 2026 Anselmo Pedroso Imobiliária. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <a
+      href="https://wa.me/5551995483061"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Falar pelo WhatsApp"
+    >
+      <i class="ri-whatsapp-line"></i>
+    </a>
+
+    <!-- Scripts originais sem alteração -->
     <script src="../js/imoveis-dados.js"></script>
     <script src="../js/imoveis-lista.js"></script>
+
+    <!-- Menu toggle (necessário para o header funcionar nesta página) -->
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const navMenu = document.getElementById("navMenu");
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", () => {
+          navMenu.classList.toggle("active");
+        });
+      }
+    </script>
   </body>
 </html>
