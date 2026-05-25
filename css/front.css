@@ -2551,3 +2551,238 @@ textarea:focus {
     padding: 28px 0 48px;
   }
 }
+/* ═══════════════════════════════════════════════
+   FOTO DO ANSELMO — seção Sobre
+═══════════════════════════════════════════════ */
+.foto-anselmo-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.foto-anselmo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius);
+}
+
+/* ═══════════════════════════════════════════════
+   CARROSSEL DE IMÓVEIS EM DESTAQUE
+═══════════════════════════════════════════════ */
+.section-destaque {
+  overflow: hidden;
+}
+
+.carrossel-wrapper {
+  overflow: hidden;
+  padding: 0 0 8px;
+  /* margem lateral via container pai não funciona com overflow:hidden,
+     então usamos padding */
+  padding-left: max(4vw, calc((100vw - 1180px) / 2));
+}
+
+.carrossel-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-right: max(4vw, calc((100vw - 1180px) / 2));
+  padding-bottom: 8px;
+}
+
+.carrossel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carrossel-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 28px rgba(11, 34, 53, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.carrossel-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(11, 34, 53, 0.14);
+}
+
+.carrossel-imagem {
+  height: 210px;
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.carrossel-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+
+.carrossel-card:hover .carrossel-imagem img {
+  transform: scale(1.06);
+}
+
+.carrossel-sem-foto {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--navy), var(--navy-soft));
+}
+
+.carrossel-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--navy);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 168, 79, 0.3);
+}
+
+.carrossel-info {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.carrossel-tipo {
+  color: var(--gold-dark);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.carrossel-titulo {
+  font-family: "Cinzel", serif;
+  color: var(--navy);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 4px 0 2px;
+}
+
+.carrossel-local {
+  color: var(--muted);
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.carrossel-preco {
+  color: var(--navy);
+  font-family: "Cinzel", serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.carrossel-ver {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--gold-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+/* Controles (setas + dots) */
+.carrossel-controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.carrossel-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: transparent;
+  color: var(--navy);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  display: grid;
+  place-items: center;
+}
+
+.carrossel-btn:hover {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+
+.carrossel-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.dot-ativo {
+  background: var(--gold-dark);
+  transform: scale(1.35);
+}
+
+/* Responsivo carrossel */
+@media (max-width: 600px) {
+  .carrossel-card {
+    flex: 0 0 85vw;
+  }
+}
+/* Foto do Anselmo — seção Sobre (home) */
+.foto-anselmo-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.foto-anselmo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius);
+}

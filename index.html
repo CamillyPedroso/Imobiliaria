@@ -123,7 +123,7 @@
         </div>
       </section>
 
-      <section class="section" id="imoveis">
+      <section class="section section-destaque" id="imoveis">
         <div class="container">
           <div class="section-heading">
             <span>Oportunidades selecionadas</span>
@@ -134,8 +134,24 @@
               carteira real do cliente.
             </p>
           </div>
+        </div>
 
-          <div class="cards-grid" id="propertyList"></div>
+        <div class="carrossel-wrapper">
+          <div class="carrossel-track" id="carrosselTrack"></div>
+        </div>
+
+        <div class="carrossel-controles">
+          <button
+            class="carrossel-btn"
+            id="carrosselPrev"
+            aria-label="Anterior"
+          >
+            &#8592;
+          </button>
+          <div class="carrossel-dots" id="carrosselDots"></div>
+          <button class="carrossel-btn" id="carrosselNext" aria-label="Próximo">
+            &#8594;
+          </button>
         </div>
       </section>
 
@@ -215,7 +231,12 @@
       <section class="section about-section" id="sobre">
         <div class="container about-grid">
           <div class="about-image">
-            <div class="image-placeholder">
+            <div class="image-placeholder foto-anselmo-wrap">
+              <img
+                src="img/foto-anselmo.jpeg"
+                alt="Anselmo Pedroso"
+                class="foto-anselmo"
+              />
               <span>Anselmo Pedroso</span>
             </div>
           </div>
@@ -225,10 +246,10 @@
             <h2>Experiência técnica aplicada ao mercado imobiliário.</h2>
 
             <p>
-              A Anselmo Pedroso Imobiliária atua com foco em atendimento
-              consultivo, avaliação de imóveis, compra, venda e locação. A
-              proposta é unir visão comercial, conhecimento técnico e
-              relacionamento próximo com cada cliente.
+              A Anselmo Pedroso Imóveis atua com foco em atendimento consultivo,
+              avaliação de imóveis, compra, venda e locação. A proposta é unir
+              visão comercial, conhecimento técnico e relacionamento próximo com
+              cada cliente.
             </p>
 
             <p>
@@ -261,7 +282,7 @@
         <div class="container contact-grid">
           <div>
             <span class="tagline">Atendimento</span>
-            <h2>Fale com a Anselmo Pedroso Imobiliária</h2>
+            <h2>Fale com a Anselmo Pedroso Imóveis</h2>
 
             <p>
               Entre em contato para comprar, vender, alugar ou solicitar uma
@@ -323,9 +344,9 @@
 
     <footer class="footer">
       <div class="container footer-content">
-        <img src="img/logo.png" alt="Logo Anselmo Pedroso Imobiliária" />
+        <img src="img/logo.png" alt="Logo Anselmo Pedroso Imóveis" />
 
-        <p>© 2026 Anselmo Pedroso Imobiliária. Todos os direitos reservados.</p>
+        <p>© 2026 Anselmo Pedroso Imóveis. Todos os direitos reservados.</p>
       </div>
     </footer>
 
@@ -339,5 +360,115 @@
     </a>
 
     <script src="interacoes.js"></script>
+    <script src="js/imoveis-dados.js"></script>
+    <script>
+      // ── Menu mobile ──────────────────────────────────
+      (function () {
+        const toggle = document.getElementById("menuToggle");
+        const nav = document.getElementById("navMenu");
+        if (!toggle || !nav) return;
+
+        toggle.addEventListener("click", () => nav.classList.toggle("active"));
+
+        nav
+          .querySelectorAll("a")
+          .forEach((link) =>
+            link.addEventListener("click", () =>
+              nav.classList.remove("active"),
+            ),
+          );
+      })();
+
+      // ── Carrossel de destaque ─────────────────────────
+      (function () {
+        const track = document.getElementById("carrosselTrack");
+        const dotsEl = document.getElementById("carrosselDots");
+        if (!track || typeof IMOVEIS === "undefined") return;
+
+        // Pega até 5 imóveis
+        const destaques = IMOVEIS.slice(0, 5);
+        let atual = 0;
+        let timer;
+
+        function urlImovel(imovel) {
+          return "sub-paginas/" + imovel.pagina;
+        }
+
+        function renderCards() {
+          track.innerHTML = destaques
+            .map((im, i) => {
+              const foto =
+                im.fotos && im.fotos.length
+                  ? im.fotos[0].replace("../../", "")
+                  : "";
+              const imgTag = foto
+                ? `<img src="${foto}" alt="${im.titulo}" loading="lazy" />`
+                : `<div class="carrossel-sem-foto"></div>`;
+
+              return `
+            <a class="carrossel-card" href="${urlImovel(im)}" data-index="${i}">
+              <div class="carrossel-imagem">${imgTag}
+                <span class="carrossel-badge">${im.operacao}</span>
+              </div>
+              <div class="carrossel-info">
+                <span class="carrossel-tipo">${im.tipo}</span>
+                <h3 class="carrossel-titulo">${im.titulo}</h3>
+                <span class="carrossel-local">
+                  <i class="ri-map-pin-line"></i> ${im.bairro}, ${im.cidade}
+                </span>
+                <span class="carrossel-preco">${im.preco}</span>
+                <span class="carrossel-ver">Ver imóvel →</span>
+              </div>
+            </a>`;
+            })
+            .join("");
+        }
+
+        function renderDots() {
+          dotsEl.innerHTML = destaques
+            .map(
+              (_, i) =>
+                `<button class="dot${i === 0 ? " dot-ativo" : ""}" data-i="${i}" aria-label="Ir para slide ${i + 1}"></button>`,
+            )
+            .join("");
+          dotsEl
+            .querySelectorAll(".dot")
+            .forEach((d) =>
+              d.addEventListener("click", () => irPara(+d.dataset.i)),
+            );
+        }
+
+        function atualizaDots() {
+          dotsEl
+            .querySelectorAll(".dot")
+            .forEach((d, i) => d.classList.toggle("dot-ativo", i === atual));
+        }
+
+        function irPara(idx) {
+          atual = (idx + destaques.length) % destaques.length;
+          const cardWidth =
+            track.querySelector(".carrossel-card").offsetWidth + 24;
+          track.scrollTo({ left: atual * cardWidth, behavior: "smooth" });
+          atualizaDots();
+          resetTimer();
+        }
+
+        function resetTimer() {
+          clearInterval(timer);
+          timer = setInterval(() => irPara(atual + 1), 4000);
+        }
+
+        document
+          .getElementById("carrosselPrev")
+          ?.addEventListener("click", () => irPara(atual - 1));
+        document
+          .getElementById("carrosselNext")
+          ?.addEventListener("click", () => irPara(atual + 1));
+
+        renderCards();
+        renderDots();
+        resetTimer();
+      })();
+    </script>
   </body>
 </html>
