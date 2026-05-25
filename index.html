@@ -385,7 +385,6 @@
         const dotsEl = document.getElementById("carrosselDots");
         if (!track || typeof IMOVEIS === "undefined") return;
 
-        // Pega até 5 imóveis
         const destaques = IMOVEIS.slice(0, 5);
         let atual = 0;
         let timer;
@@ -397,9 +396,10 @@
         function renderCards() {
           track.innerHTML = destaques
             .map((im, i) => {
+              // corrige o caminho: ../../img/ → img/
               const foto =
                 im.fotos && im.fotos.length
-                  ? im.fotos[0].replace("../../", "")
+                  ? im.fotos[0].replace(/^(\.\.\/)+/, "")
                   : "";
               const imgTag = foto
                 ? `<img src="${foto}" alt="${im.titulo}" loading="lazy" />`
@@ -444,19 +444,36 @@
             .forEach((d, i) => d.classList.toggle("dot-ativo", i === atual));
         }
 
+        function getCardWidth() {
+          const card = track.querySelector(".carrossel-card");
+          if (!card) return 0;
+          const style = window.getComputedStyle(track);
+          const gap = parseFloat(style.gap) || 24;
+          return card.offsetWidth + gap;
+        }
+
         function irPara(idx) {
           atual = (idx + destaques.length) % destaques.length;
-          const cardWidth =
-            track.querySelector(".carrossel-card").offsetWidth + 24;
-          track.scrollTo({ left: atual * cardWidth, behavior: "smooth" });
+          track.scrollTo({ left: atual * getCardWidth(), behavior: "smooth" });
           atualizaDots();
           resetTimer();
         }
 
         function resetTimer() {
           clearInterval(timer);
-          timer = setInterval(() => irPara(atual + 1), 4000);
+          timer = setInterval(() => irPara(atual + 1), 4500);
         }
+
+        // atualiza dot pelo scroll manual também
+        track.addEventListener("scroll", () => {
+          const w = getCardWidth();
+          if (!w) return;
+          const idx = Math.round(track.scrollLeft / w);
+          if (idx !== atual) {
+            atual = idx;
+            atualizaDots();
+          }
+        });
 
         document
           .getElementById("carrosselPrev")
