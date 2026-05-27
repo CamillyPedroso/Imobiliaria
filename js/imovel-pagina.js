@@ -23,7 +23,7 @@
   }
 
   // Título da aba
-  document.title = `${imovel.titulo} | Anselmo Pedroso Imóveis`;
+  document.title = `${imovel.titulo} | Imóvel`;
 
   /* ── HELPERS ─────────────────────────────────────────────── */
 
