@@ -1,0 +1,339 @@
+/* ================================================================
+   FILTROS CUSTOMIZADOS — Anselmo Pedroso Imóveis
+   Cole em: css/imoveis-filtros.css
+   Adicione no <head> do imoveis.html:
+   <link rel="stylesheet" href="../css/imoveis-filtros.css?v=1" />
+   ================================================================ */
+
+/* ── Seção e layout ─────────────────────────────────────────── */
+.filtros-imoveis-novo {
+  padding: 28px 0 0;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(214, 168, 79, 0.2);
+}
+
+.filtros-inner {
+  display: grid;
+  grid-template-columns: 1fr 220px 220px;
+  gap: 12px;
+  padding-bottom: 28px;
+  align-items: start;
+}
+
+/* ── Campo de busca ──────────────────────────────────────────── */
+.filtro-busca-wrapper {
+  position: relative;
+}
+
+.filtro-icone-busca {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b8862e;
+  font-size: 1.05rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.filtro-input {
+  width: 100%;
+  background: #f7f4ed;
+  border: 1.5px solid #e5e0d5;
+  border-radius: 14px;
+  padding: 14px 18px 14px 46px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.93rem;
+  color: #1f2933;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+  height: 52px;
+}
+
+.filtro-input::placeholder {
+  color: #9ca3af;
+}
+
+.filtro-input:focus {
+  border-color: #d6a84f;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(214, 168, 79, 0.12);
+}
+
+/* ── Wrapper do select customizado ──────────────────────────── */
+.filtro-select-wrapper {
+  position: relative;
+}
+
+/* Select nativo oculto — mantém lógica do JS original */
+.filtro-select-real {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+/* ── Botão principal do dropdown ────────────────────────────── */
+.filtro-custom {
+  position: relative;
+  user-select: none;
+}
+
+.filtro-custom-btn {
+  width: 100%;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f7f4ed;
+  border: 1.5px solid #e5e0d5;
+  border-radius: 14px;
+  padding: 0 14px 0 16px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 0.93rem;
+  color: #1f2933;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+  text-align: left;
+}
+
+.filtro-custom-btn:hover {
+  border-color: #d6a84f;
+  background: #ffffff;
+}
+
+.filtro-custom.ativo .filtro-custom-btn {
+  border-color: #d6a84f;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(214, 168, 79, 0.12);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: transparent;
+}
+
+/* ícone à esquerda */
+.filtro-custom-icon {
+  color: #b8862e;
+  font-size: 1rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* texto central — cresce para ocupar espaço */
+.filtro-custom-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+/* seta */
+.filtro-custom-arrow {
+  color: #b8862e;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.filtro-custom.ativo .filtro-custom-arrow {
+  transform: rotate(180deg);
+}
+
+/* ── Menu dropdown ───────────────────────────────────────────── */
+.filtro-custom-menu {
+  position: absolute;
+  top: calc(100% - 2px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1.5px solid #d6a84f;
+  border-top: none;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  box-shadow: 0 16px 40px rgba(11, 34, 53, 0.14);
+  z-index: 200;
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+}
+
+.filtro-custom.ativo .filtro-custom-menu {
+  display: flex;
+  animation: slideDown 0.18s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Opções do menu ──────────────────────────────────────────── */
+.filtro-custom-menu button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 18px;
+  background: transparent;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  color: #1f2933;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background 0.15s,
+    color 0.15s;
+  border-bottom: 1px solid #f0ece4;
+}
+
+.filtro-custom-menu button:last-child {
+  border-bottom: none;
+}
+
+.filtro-custom-menu button:hover {
+  background: rgba(214, 168, 79, 0.08);
+  color: #0b2235;
+}
+
+.filtro-custom-menu button.selecionado {
+  background: #0b2235;
+  color: #ffffff;
+}
+
+.filtro-custom-menu button.selecionado i {
+  color: #d6a84f;
+}
+
+/* ícone de cada opção */
+.filtro-custom-menu button i {
+  font-size: 1rem;
+  color: #b8862e;
+  width: 18px;
+  flex-shrink: 0;
+}
+
+/* ── Botão × limpar filtro ───────────────────────────────────── */
+.filtro-reset {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(11, 34, 53, 0.08);
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.72rem;
+  color: #6b7280;
+  z-index: 10;
+  transition:
+    background 0.15s,
+    color 0.15s;
+  padding: 0;
+  line-height: 1;
+}
+
+.filtro-reset:hover {
+  background: rgba(11, 34, 53, 0.16);
+  color: #0b2235;
+}
+
+/* Quando o reset aparece, recua a seta para não sobrepor */
+.filtro-custom-wrapper.tem-valor .filtro-custom-arrow {
+  margin-right: 20px;
+}
+
+/* ── Chips rápidos ───────────────────────────────────────────── */
+.filtros-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 0 20px;
+}
+
+.chip-filtro {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f7f4ed;
+  border: 1.5px solid #e5e0d5;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1f2933;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.chip-filtro i {
+  font-size: 0.85rem;
+  color: #b8862e;
+}
+
+.chip-filtro:hover {
+  border-color: #d6a84f;
+  background: rgba(214, 168, 79, 0.08);
+}
+
+.chip-filtro.ativo {
+  background: #0b2235;
+  border-color: #0b2235;
+  color: #ffffff;
+}
+
+.chip-filtro.ativo i {
+  color: #d6a84f;
+}
+
+/* ── Responsivo ──────────────────────────────────────────────── */
+@media (max-width: 980px) {
+  .filtros-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+  .filtro-busca-wrapper {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .filtros-inner {
+    grid-template-columns: 1fr;
+  }
+  .filtro-busca-wrapper {
+    grid-column: auto;
+  }
+  .filtros-chips {
+    gap: 6px;
+  }
+  .chip-filtro {
+    font-size: 0.75rem;
+    padding: 5px 13px;
+  }
+}
