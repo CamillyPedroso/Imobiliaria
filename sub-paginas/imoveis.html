@@ -16,10 +16,66 @@
 
     <link rel="stylesheet" href="../css/front.css?v=2" />
     <link rel="stylesheet" href="../css/imoveis-page.css?v=1" />
+
+    <style>
+      /* ── Grid dos filtros: 3 colunas (busca menor + tipo + aquisição) ── */
+      .filtros-inner {
+        grid-template-columns: 1fr 196px 196px;
+      }
+
+      /* Botão × para limpar cada select */
+      .filtro-reset {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(11, 34, 53, 0.09);
+        border: none;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 0.75rem;
+        color: #6b7280;
+        z-index: 2;
+        transition:
+          background 0.15s,
+          color 0.15s;
+        padding: 0;
+        line-height: 1;
+      }
+
+      .filtro-reset:hover {
+        background: rgba(11, 34, 53, 0.18);
+        color: #0b2235;
+      }
+
+      /* Tablet: 2 colunas */
+      @media (max-width: 980px) {
+        .filtros-inner {
+          grid-template-columns: 1fr 1fr;
+        }
+        .filtro-busca-wrapper {
+          grid-column: 1 / -1;
+        }
+      }
+
+      /* Mobile: coluna única */
+      @media (max-width: 600px) {
+        .filtros-inner {
+          grid-template-columns: 1fr;
+        }
+        .filtro-busca-wrapper {
+          grid-column: auto;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- ===== HEADER (idêntico ao original, sem alteração de IDs) ===== -->
     <header class="header">
       <div class="container header-content">
         <a href="../index.html" class="logo-area">
@@ -61,10 +117,9 @@
     </header>
 
     <main class="pagina-imoveis">
-      <!-- ===== HERO MELHORADO ===== -->
+      <!-- ===== HERO ===== -->
       <section class="hero-imoveis-novo">
         <div class="container hero-imoveis-grid">
-          <!-- Coluna principal: título e subtítulo -->
           <div class="hero-imoveis-texto">
             <span class="etiqueta-hero">
               <i class="ri-map-pin-2-line"></i>
@@ -81,7 +136,6 @@
               em edificações.
             </p>
 
-            <!-- Indicadores rápidos -->
             <div class="hero-imoveis-chips">
               <span><i class="ri-home-4-line"></i> Venda</span>
               <span><i class="ri-key-line"></i> Locação</span>
@@ -90,7 +144,6 @@
             </div>
           </div>
 
-          <!-- Card lateral de atendimento -->
           <aside class="card-atendimento">
             <div class="card-atendimento-header">
               <i class="ri-customer-service-2-line"></i>
@@ -128,37 +181,64 @@
         </div>
       </section>
 
-      <!-- ===== FILTROS MELHORADOS ===== -->
+      <!-- ===== FILTROS ===== -->
       <section class="filtros-imoveis-novo">
         <div class="container">
           <div class="filtros-inner">
-            <!-- Campo de busca com ícone -->
+            <!-- Busca -->
             <div class="filtro-busca-wrapper">
               <i class="ri-search-line filtro-icone-busca"></i>
               <input
                 type="text"
                 id="buscaImoveis"
-                placeholder="Buscar por bairro, rua ou código do imóvel…"
+                placeholder="Buscar por bairro ou código…"
                 class="filtro-input"
               />
             </div>
 
-            <!-- Select de tipo -->
+            <!-- Filtro: tipo de imóvel -->
             <div class="filtro-select-wrapper">
               <i class="ri-filter-3-line filtro-icone-select"></i>
               <select id="tipoImovel" class="filtro-select">
-                <option value="">Todos os tipos</option>
+                <option value="" selected hidden>Todos os tipos</option>
                 <option value="casa">Casa</option>
+                <option value="apartamento">JK / Apartamento</option>
                 <option value="terreno">Terreno</option>
                 <option value="sobrado">Sobrado</option>
                 <option value="comercial">Comercial</option>
               </select>
+              <button
+                class="filtro-reset"
+                id="resetTipo"
+                title="Ver todos os tipos"
+                aria-label="Limpar filtro de tipo"
+              >
+                <i class="ri-close-line"></i>
+              </button>
+            </div>
+
+            <!-- Filtro: tipo de aquisição -->
+            <div class="filtro-select-wrapper">
+              <i class="ri-key-2-line filtro-icone-select"></i>
+              <select id="operacaoImovel" class="filtro-select">
+                <option value="" selected hidden>Tipo de aquisição</option>
+                <option value="Venda">Compra</option>
+                <option value="Aluguel">Aluguel</option>
+              </select>
+              <button
+                class="filtro-reset"
+                id="resetOperacao"
+                title="Ver todos"
+                aria-label="Limpar filtro de aquisição"
+              >
+                <i class="ri-close-line"></i>
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ===== GRID DE IMÓVEIS (IDs originais mantidos) ===== -->
+      <!-- ===== GRID DE IMÓVEIS ===== -->
       <section class="secao-lista-imoveis">
         <div class="container">
           <div id="listaImoveis" class="grid-imoveis"></div>
@@ -166,11 +246,10 @@
       </section>
     </main>
 
-    <!-- ===== FOOTER SIMPLES ===== -->
     <footer class="footer">
       <div class="container footer-content">
         <img src="../img/logo.png" alt="Logo Imóvel" />
-        <p>© 2026 Imóvel. Todos os direitos reservados.</p>
+        <p>© 2026 Anselmo Pedroso Imóveis. Todos os direitos reservados.</p>
       </div>
     </footer>
 
@@ -183,11 +262,9 @@
       <i class="ri-whatsapp-line"></i>
     </a>
 
-    <!-- Scripts originais sem alteração -->
     <script src="../js/imoveis-dados.js"></script>
     <script src="../js/imoveis-lista.js"></script>
 
-    <!-- Menu toggle (necessário para o header funcionar nesta página) -->
     <script>
       const menuToggle = document.getElementById("menuToggle");
       const navMenu = document.getElementById("navMenu");

@@ -51,18 +51,22 @@
   // Faixa horizontal com ícones grandes
   function montarFaixa() {
     const items = [];
+
+    // ── Dados reais do imóvel (cada um só entra se existir) ──
     if (imovel.area)
       items.push(`
         <div class="faixa-item">
           <div class="faixa-icone"><i class="ri-ruler-2-line"></i></div>
           <div><span class="faixa-valor">${imovel.area}</span><span class="faixa-label">Área construída</span></div>
         </div>`);
+
     if (imovel.dormitorios)
       items.push(`
         <div class="faixa-item">
           <div class="faixa-icone"><i class="ri-hotel-bed-line"></i></div>
           <div><span class="faixa-valor">${imovel.dormitorios}</span><span class="faixa-label">Dormitório${imovel.dormitorios > 1 ? "s" : ""}</span></div>
         </div>`);
+
     if (imovel.banheiros)
       items.push(`
         <div class="faixa-item">
@@ -70,36 +74,50 @@
           <div><span class="faixa-valor">${imovel.banheiros}</span><span class="faixa-label">Banheiro${imovel.banheiros > 1 ? "s" : ""}</span></div>
         </div>`);
 
-    // Sempre mostra bairro/cidade como último item
+    if (imovel.vagas)
+      items.push(`
+        <div class="faixa-item">
+          <div class="faixa-icone"><i class="ri-car-line"></i></div>
+          <div><span class="faixa-valor">${imovel.vagas}</span><span class="faixa-label">Vaga${imovel.vagas > 1 ? "s" : ""}</span></div>
+        </div>`);
+
+    // ── Fillers contextuais — usados quando faltam dados para completar 3 itens ──
+    // O 4º slot é sempre reservado para a localização.
+    const fillers = [
+      `<div class="faixa-item">
+        <div class="faixa-icone"><i class="ri-store-2-line"></i></div>
+        <div><span class="faixa-valor">Comércio</span><span class="faixa-label">Serviços e lojas próximos</span></div>
+       </div>`,
+      `<div class="faixa-item">
+        <div class="faixa-icone"><i class="ri-bus-line"></i></div>
+        <div><span class="faixa-valor">Ônibus</span><span class="faixa-label">Transporte público próximo</span></div>
+       </div>`,
+      `<div class="faixa-item">
+        <div class="faixa-icone"><i class="ri-road-map-line"></i></div>
+        <div><span class="faixa-valor">BR-116</span><span class="faixa-label">Acesso rápido às vias</span></div>
+       </div>`,
+    ];
+
+    let fi = 0;
+    while (items.length < 3 && fi < fillers.length) {
+      items.push(fillers[fi++]);
+    }
+
+    // ── Localização — entra exatamente uma vez, sempre no último slot ──
     items.push(`
       <div class="faixa-item">
         <div class="faixa-icone"><i class="ri-map-pin-2-line"></i></div>
         <div><span class="faixa-valor">${imovel.bairro}</span><span class="faixa-label">${imovel.cidade}</span></div>
       </div>`);
 
-    // Se tiver vagas, substitui o quarto item pelo item de vagas e empurra localização
-    if (imovel.vagas && items.length >= 4) {
-      items.splice(
-        3,
-        0,
-        `
-        <div class="faixa-item">
-          <div class="faixa-icone"><i class="ri-car-line"></i></div>
-          <div><span class="faixa-valor">${imovel.vagas}</span><span class="faixa-label">Vaga${imovel.vagas > 1 ? "s" : ""}</span></div>
-        </div>`,
-      );
-      // mantém só 4 itens — remove o excedente
-      items.splice(4);
+    // Limita a 4 colunas preservando o último item (localização)
+    if (items.length > 4) {
+      const loc = items.pop();
+      items.splice(3);
+      items.push(loc);
     }
 
-    // Garante exatamente 4 colunas preenchendo com localização se precisar
-    while (items.length < 4) {
-      items.push(
-        `<div class="faixa-item"><div class="faixa-icone"><i class="ri-map-pin-2-line"></i></div><div><span class="faixa-valor">${imovel.bairro}</span><span class="faixa-label">${imovel.cidade}</span></div></div>`,
-      );
-    }
-
-    return `<div class="faixa-caracteristicas">${items.slice(0, 4).join("")}</div>`;
+    return `<div class="faixa-caracteristicas">${items.join("")}</div>`;
   }
 
   // Galeria de fotos
