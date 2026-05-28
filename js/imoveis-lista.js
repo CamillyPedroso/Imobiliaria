@@ -113,11 +113,37 @@ function filtrarImoveis() {
 /* ── RESET DOS SELECTS ───────────────────────────── */
 resetTipo.addEventListener("click", () => {
   tipoImovel.value = "";
+
+  const dropdown = document.querySelector(
+    '.filtro-custom[data-select="tipoImovel"]',
+  );
+  if (dropdown) {
+    dropdown.querySelector(".filtro-custom-text").textContent =
+      "Todos os tipos";
+
+    dropdown.querySelectorAll(".filtro-custom-menu button").forEach((btn) => {
+      btn.classList.toggle("selecionado", btn.dataset.value === "");
+    });
+  }
+
   filtrarImoveis();
 });
 
 resetOperacao.addEventListener("click", () => {
   operacaoImovel.value = "";
+
+  const dropdown = document.querySelector(
+    '.filtro-custom[data-select="operacaoImovel"]',
+  );
+  if (dropdown) {
+    dropdown.querySelector(".filtro-custom-text").textContent =
+      "Tipo de aquisição";
+
+    dropdown.querySelectorAll(".filtro-custom-menu button").forEach((btn) => {
+      btn.classList.toggle("selecionado", btn.dataset.value === "");
+    });
+  }
+
   filtrarImoveis();
 });
 
@@ -128,3 +154,46 @@ operacaoImovel.addEventListener("change", filtrarImoveis);
 
 /* ── RENDER INICIAL ──────────────────────────────── */
 renderizarImoveis(IMOVEIS);
+/* ── DROPDOWNS CUSTOMIZADOS DOS FILTROS ───────────────────── */
+document.querySelectorAll(".filtro-custom").forEach((dropdown) => {
+  const selectId = dropdown.dataset.select;
+  const selectReal = document.getElementById(selectId);
+  const botao = dropdown.querySelector(".filtro-custom-btn");
+  const texto = dropdown.querySelector(".filtro-custom-text");
+  const opcoes = dropdown.querySelectorAll(".filtro-custom-menu button");
+
+  if (!selectReal || !botao || !texto) return;
+
+  botao.addEventListener("click", () => {
+    document.querySelectorAll(".filtro-custom").forEach((item) => {
+      if (item !== dropdown) item.classList.remove("ativo");
+    });
+
+    dropdown.classList.toggle("ativo");
+  });
+
+  opcoes.forEach((opcao) => {
+    opcao.addEventListener("click", () => {
+      const valor = opcao.dataset.value;
+      const label = opcao.textContent.trim();
+
+      selectReal.value = valor;
+      texto.textContent = label;
+
+      opcoes.forEach((btn) => btn.classList.remove("selecionado"));
+      opcao.classList.add("selecionado");
+
+      dropdown.classList.remove("ativo");
+
+      filtrarImoveis();
+    });
+  });
+});
+
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".filtro-custom")) {
+    document.querySelectorAll(".filtro-custom").forEach((dropdown) => {
+      dropdown.classList.remove("ativo");
+    });
+  }
+});

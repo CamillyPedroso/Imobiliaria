@@ -196,22 +196,97 @@
               />
             </div>
 
-            <!-- Filtro: tipo de imóvel -->
+            <<!-- Filtro: tipo de imóvel -->
             <div class="filtro-select-wrapper">
-              <i class="ri-filter-3-line filtro-icone-select"></i>
-              <select id="tipoImovel" class="filtro-select">
-                <option value="" selected hidden>Todos os tipos</option>
+              <select
+                id="tipoImovel"
+                class="filtro-select-real"
+                aria-hidden="true"
+                tabindex="-1"
+              >
+                <option value="" selected>Todos os tipos</option>
                 <option value="casa">Casa</option>
                 <option value="apartamento">JK / Apartamento</option>
                 <option value="terreno">Terreno</option>
                 <option value="sobrado">Sobrado</option>
                 <option value="comercial">Comercial</option>
               </select>
+
+              <div class="filtro-custom" data-select="tipoImovel">
+                <button class="filtro-custom-btn" type="button">
+                  <span class="filtro-custom-icon"
+                    ><i class="ri-filter-3-line"></i
+                  ></span>
+                  <span class="filtro-custom-text">Todos os tipos</span>
+                  <span class="filtro-custom-arrow"
+                    ><i class="ri-arrow-down-s-line"></i
+                  ></span>
+                </button>
+
+                <div class="filtro-custom-menu">
+                  <button type="button" data-value="" class="selecionado">
+                    Todos os tipos
+                  </button>
+                  <button type="button" data-value="casa">Casa</button>
+                  <button type="button" data-value="apartamento">
+                    JK / Apartamento
+                  </button>
+                  <button type="button" data-value="terreno">Terreno</button>
+                  <button type="button" data-value="sobrado">Sobrado</button>
+                  <button type="button" data-value="comercial">
+                    Comercial
+                  </button>
+                </div>
+              </div>
+
               <button
                 class="filtro-reset"
                 id="resetTipo"
                 title="Ver todos os tipos"
                 aria-label="Limpar filtro de tipo"
+              >
+                <i class="ri-close-line"></i>
+              </button>
+            </div>
+
+            <!-- Filtro: tipo de aquisição -->
+            <div class="filtro-select-wrapper">
+              <select
+                id="operacaoImovel"
+                class="filtro-select-real"
+                aria-hidden="true"
+                tabindex="-1"
+              >
+                <option value="" selected>Tipo de aquisição</option>
+                <option value="Venda">Compra</option>
+                <option value="Aluguel">Aluguel</option>
+              </select>
+
+              <div class="filtro-custom" data-select="operacaoImovel">
+                <button class="filtro-custom-btn" type="button">
+                  <span class="filtro-custom-icon"
+                    ><i class="ri-key-2-line"></i
+                  ></span>
+                  <span class="filtro-custom-text">Tipo de aquisição</span>
+                  <span class="filtro-custom-arrow"
+                    ><i class="ri-arrow-down-s-line"></i
+                  ></span>
+                </button>
+
+                <div class="filtro-custom-menu">
+                  <button type="button" data-value="" class="selecionado">
+                    Tipo de aquisição
+                  </button>
+                  <button type="button" data-value="Venda">Compra</button>
+                  <button type="button" data-value="Aluguel">Aluguel</button>
+                </div>
+              </div>
+
+              <button
+                class="filtro-reset"
+                id="resetOperacao"
+                title="Ver todos"
+                aria-label="Limpar filtro de aquisição"
               >
                 <i class="ri-close-line"></i>
               </button>
