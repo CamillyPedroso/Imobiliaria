@@ -1,3 +1,7 @@
+// ── CONFIGURAÇÃO ─────────────────────────────────────────────────────────────
+// Após publicar o Apps Script como Web App, cole a URL gerada aqui:
+const SHEETS_ENDPOINT = "COLE_AQUI_A_URL_DO_SEU_WEB_APP";
+
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 const propertyList = document.getElementById("propertyList");
@@ -104,21 +108,59 @@ if (propertyList) {
 }
 
 if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const nome = document.getElementById("nome").value;
-    const telefone = document.getElementById("telefone").value;
-    const interesse = document.getElementById("interesse").value;
-    const mensagem = document.getElementById("mensagem").value;
+    const nome = document.getElementById("nome")?.value?.trim() || "";
+    const telefone = document.getElementById("telefone")?.value?.trim() || "";
+    const email = document.getElementById("email")?.value?.trim() || "";
+    const interesse = document.getElementById("interesse")?.value || "";
+    const mensagem = document.getElementById("mensagem")?.value?.trim() || "";
 
-    const text = encodeURIComponent(
-      `Olá, meu nome é ${nome}.
-Telefone: ${telefone}
-Tenho interesse em: ${interesse}
-Mensagem: ${mensagem}`,
+    // 1. Abre o WhatsApp imediatamente (antes do await para evitar bloqueio do browser)
+    const wppText = encodeURIComponent(
+      `Olá! Meu nome é ${nome}.\nTelefone: ${telefone}\nE-mail: ${email}\nTenho interesse em: ${interesse}\nMensagem: ${mensagem}`,
     );
+    window.open(`https://wa.me/${whatsappNumber}?text=${wppText}`, "_blank");
 
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank");
+    // 2. Salva no Google Sheets em segundo plano
+    if (SHEETS_ENDPOINT !== "COLE_AQUI_A_URL_DO_SEU_WEB_APP") {
+      try {
+        await fetch(SHEETS_ENDPOINT, {
+          method: "POST",
+          body: JSON.stringify({ nome, telefone, email, interesse, mensagem }),
+        });
+      } catch (erro) {
+        console.error("Sheets: erro ao salvar lead —", erro);
+      }
+    }
+
+    // 3. Limpa o formulário e mostra feedback visual
+    contactForm.reset();
+    _mostrarFeedback("✓ Mensagem enviada! Entraremos em contato em breve.");
   });
+}
+
+function _mostrarFeedback(texto) {
+  // Remove feedback anterior se houver
+  const anterior = contactForm.querySelector(".form-feedback");
+  if (anterior) anterior.remove();
+
+  const aviso = document.createElement("p");
+  aviso.className = "form-feedback";
+  aviso.textContent = texto;
+  aviso.style.cssText = [
+    "background:#d1fae5",
+    "color:#065f46",
+    "border:1px solid #6ee7b7",
+    "border-radius:10px",
+    "padding:12px 16px",
+    "margin-top:14px",
+    "font-size:0.88rem",
+    "font-weight:600",
+    "text-align:center",
+  ].join(";");
+
+  contactForm.appendChild(aviso);
+  setTimeout(() => aviso.remove(), 6000);
 }
