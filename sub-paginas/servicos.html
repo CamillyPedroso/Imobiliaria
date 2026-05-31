@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Serviços | Imóvel</title>
+    <title>Serviços Imobiliários | Anselmo Pedroso Imóveis — CRECI 11540</title>
+    <meta
+      name="description"
+      content="Venda, locação, avaliação e consultoria imobiliária em Guaíba e Porto Alegre. Anselmo Pedroso — corretor CRECI 11540, perito avaliador e técnico em edificações."
+    />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
@@ -14,7 +18,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="../css/front.css?v=2" />
+    <link rel="stylesheet" href="../css/front.css?v=3" />
 
     <style>
       /* =============================================
@@ -54,7 +58,7 @@
       }
 
       /* =============================================
-         MENU MOBILE (mesmo padrão do site)
+         MENU MOBILE
       ============================================= */
       @media (max-width: 980px) {
         .nav.active {
@@ -249,12 +253,10 @@
         margin-bottom: 20px;
         border-bottom: 1px solid rgba(200, 160, 32, 0.2);
       }
-
       .srv-autoridade-header i {
         font-size: 1.6rem;
         color: var(--s-gold);
       }
-
       .srv-autoridade-header span {
         font-family: "Cinzel", serif;
         font-size: 0.85rem;
@@ -269,13 +271,11 @@
         flex-direction: column;
         gap: 14px;
       }
-
       .srv-autoridade-lista li {
         display: flex;
         align-items: center;
         gap: 14px;
       }
-
       .srv-autoridade-icone {
         width: 40px;
         height: 40px;
@@ -291,7 +291,6 @@
         font-size: 1.1rem;
         color: var(--s-gold);
       }
-
       .srv-autoridade-info strong {
         display: block;
         color: var(--s-white);
@@ -310,7 +309,6 @@
       .srv-secao {
         padding: 80px 0;
       }
-
       .srv-secao-alt {
         background: var(--s-white);
       }
@@ -319,7 +317,6 @@
         text-align: center;
         margin-bottom: 52px;
       }
-
       .srv-heading-tag {
         display: inline-block;
         color: var(--s-gold);
@@ -329,7 +326,6 @@
         letter-spacing: 0.16em;
         margin-bottom: 14px;
       }
-
       .srv-heading h2 {
         font-family: "Cinzel", serif;
         font-size: clamp(1.5rem, 2.8vw, 2.2rem);
@@ -337,7 +333,6 @@
         line-height: 1.15;
         margin-bottom: 14px;
       }
-
       .srv-heading p {
         color: var(--s-muted);
         font-size: 0.95rem;
@@ -363,13 +358,10 @@
           box-shadow 0.25s;
         display: flex;
         flex-direction: column;
-        gap: 0;
       }
-
       .srv-secao-alt .srv-card {
         background: var(--s-cream);
       }
-
       .srv-card:hover {
         transform: translateY(-6px);
         box-shadow: 0 24px 52px rgba(11, 34, 53, 0.14);
@@ -399,7 +391,6 @@
         color: var(--s-gold);
         margin-bottom: 8px;
       }
-
       .srv-card h3 {
         font-family: "Cinzel", serif;
         font-size: 1rem;
@@ -408,7 +399,6 @@
         line-height: 1.25;
         margin-bottom: 12px;
       }
-
       .srv-card p {
         font-size: 0.86rem;
         color: var(--s-muted);
@@ -444,13 +434,11 @@
       .srv-etapas {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 0;
         background: var(--s-white);
         border: 1px solid var(--s-border);
         border-radius: var(--s-radius);
         overflow: hidden;
         box-shadow: var(--s-shadow);
-        position: relative;
       }
 
       .srv-etapa {
@@ -465,8 +453,6 @@
       .srv-etapa:hover {
         background: #faf8f3;
       }
-
-      /* Linha de conexão entre etapas */
       .srv-etapa::after {
         content: "";
         position: absolute;
@@ -480,7 +466,6 @@
       .srv-etapa:last-child::after {
         display: none;
       }
-
       .srv-etapa-num {
         font-family: "Cinzel", serif;
         font-size: 2rem;
@@ -489,7 +474,6 @@
         line-height: 1;
         margin-bottom: 14px;
       }
-
       .srv-etapa-ico {
         width: 46px;
         height: 46px;
@@ -505,7 +489,6 @@
         font-size: 1.2rem;
         color: var(--s-gold);
       }
-
       .srv-etapa h3 {
         font-family: "Cinzel", serif;
         font-size: 0.88rem;
@@ -514,7 +497,6 @@
         line-height: 1.3;
         margin-bottom: 8px;
       }
-
       .srv-etapa p {
         font-size: 0.82rem;
         color: var(--s-muted);
@@ -529,7 +511,6 @@
         grid-template-columns: repeat(6, 1fr);
         gap: 16px;
       }
-
       .srv-dif {
         background: var(--s-white);
         border: 1px solid var(--s-border);
@@ -545,7 +526,6 @@
         transform: translateY(-4px);
         box-shadow: 0 12px 32px rgba(11, 34, 53, 0.12);
       }
-
       .srv-dif-ico {
         width: 48px;
         height: 48px;
@@ -561,7 +541,6 @@
         font-size: 1.2rem;
         color: var(--s-gold);
       }
-
       .srv-dif span {
         display: block;
         font-size: 0.78rem;
@@ -577,14 +556,12 @@
         background: var(--s-navy);
         padding: 72px 0;
       }
-
       .srv-cta-inner {
         display: grid;
         grid-template-columns: 1fr auto;
         gap: 40px;
         align-items: center;
       }
-
       .srv-cta-foto {
         width: 120px;
         height: 120px;
@@ -600,13 +577,11 @@
         font-size: 3rem;
         color: var(--s-gold);
       }
-
       .srv-cta-esq {
         display: flex;
         align-items: center;
         gap: 28px;
       }
-
       .srv-cta-tag {
         display: inline-block;
         color: var(--s-gold);
@@ -616,7 +591,6 @@
         letter-spacing: 0.16em;
         margin-bottom: 10px;
       }
-
       .srv-cta h2 {
         font-family: "Cinzel", serif;
         color: var(--s-white);
@@ -624,19 +598,16 @@
         line-height: 1.2;
         margin-bottom: 8px;
       }
-
       .srv-cta p {
         color: rgba(255, 255, 255, 0.6);
         font-size: 0.9rem;
       }
-
       .srv-cta-dir {
         display: flex;
         flex-direction: column;
         gap: 12px;
         min-width: 240px;
       }
-
       .srv-cta-wpp {
         display: flex;
         align-items: center;
@@ -661,7 +632,6 @@
         background: #b8902c;
         transform: translateY(-2px);
       }
-
       .srv-cta-tel {
         display: flex;
         align-items: center;
@@ -689,7 +659,7 @@
       }
 
       /* =============================================
-         FLOAT WHATSAPP
+         BOTÃO WHATSAPP FLUTUANTE
       ============================================= */
       .whatsapp-float {
         position: fixed;
@@ -734,7 +704,6 @@
           display: none;
         }
       }
-
       @media (max-width: 860px) {
         .srv-hero-grid {
           grid-template-columns: 1fr;
@@ -757,7 +726,6 @@
           width: 100%;
         }
       }
-
       @media (max-width: 600px) {
         .srv-hero {
           padding: 44px 0 40px;
@@ -796,16 +764,17 @@
   </head>
 
   <body>
-    <!-- ===== HEADER (padrão do site) ===== -->
+    <!-- ===== HEADER ===== -->
     <header class="header">
       <div class="container header-content">
         <a href="../index.html" class="logo-area">
-          <img src="../img/logo.png" alt="Logo Imóvel" />
+          <img src="../img/logo.png" alt="Anselmo Pedroso Imóveis" />
         </a>
         <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
           ☰
         </button>
         <nav class="nav" id="navMenu">
+          <a href="../index.html"><i class="ri-arrow-left-line"></i> Início</a>
           <a href="imoveis.html"><i class="ri-building-line"></i> Imóveis</a>
           <a
             href="servicos.html"
@@ -877,8 +846,8 @@
                   <i class="ri-medal-line"></i>
                 </div>
                 <div class="srv-autoridade-info">
-                  <strong>Mais de 35 anos</strong>
-                  <span>de experiência no mercado</span>
+                  <strong>Mais de 30 anos</strong>
+                  <span>de experiência no mercado imobiliário</span>
                 </div>
               </li>
               <li>
@@ -886,7 +855,7 @@
                   <i class="ri-home-smile-line"></i>
                 </div>
                 <div class="srv-autoridade-info">
-                  <strong>Corretor de imóveis</strong>
+                  <strong>Corretor — CRECI 11540</strong>
                   <span>Intermediação profissional</span>
                 </div>
               </li>
@@ -895,8 +864,8 @@
                   <i class="ri-bar-chart-2-line"></i>
                 </div>
                 <div class="srv-autoridade-info">
-                  <strong>Perito avaliador</strong>
-                  <span>Análise técnica de mercado</span>
+                  <strong>Perito avaliador — CNAI 41608</strong>
+                  <span>Análise técnica de valor de mercado</span>
                 </div>
               </li>
               <li>
@@ -927,7 +896,7 @@
         <div class="s-container">
           <div class="srv-heading">
             <span class="srv-heading-tag">Nossos serviços</span>
-            <h2>Soluções para Cada Momento do Seu Imóvel</h2>
+            <h2>Soluções para cada momento do seu imóvel</h2>
             <p>
               Cada serviço é conduzido com atenção, transparência e foco no
               melhor resultado para o cliente.
@@ -937,14 +906,12 @@
           <div class="srv-grid">
             <article class="srv-card">
               <div class="srv-card-ico"><i class="ri-hand-coin-line"></i></div>
-              <p class="srv-card-para">
-                Para quem quer vender seu imóvel ou alugar com segurança
-              </p>
-              <h3>Avaliação Imobiliária e venda</h3>
+              <p class="srv-card-para">Para quem quer vender com segurança</p>
+              <h3>Venda de imóveis</h3>
               <p>
                 Intermediação de imóveis residenciais, comerciais e terrenos,
                 com foco em segurança, clareza nas informações e condução
-                estratégica da negociação.
+                estratégica da negociação do início ao fim.
               </p>
               <a
                 href="https://wa.me/5551995483061"
@@ -958,7 +925,7 @@
             <article class="srv-card">
               <div class="srv-card-ico"><i class="ri-key-2-line"></i></div>
               <p class="srv-card-para">Para proprietários e inquilinos</p>
-              <h3>Locação de Imóveis</h3>
+              <h3>Locação de imóveis</h3>
               <p>
                 Atendimento para proprietários e inquilinos, auxiliando na
                 divulgação, seleção, negociação e encaminhamento do imóvel ideal
@@ -977,12 +944,12 @@
               <div class="srv-card-ico">
                 <i class="ri-bar-chart-box-line"></i>
               </div>
-              <p class="srv-card-para">Para venda, inventário ou crédito</p>
-              <h3>Avaliação Imobiliária</h3>
+              <p class="srv-card-para">Para venda, inventário ou partilha</p>
+              <h3>Avaliação imobiliária</h3>
               <p>
-                Análise técnica para estimar valor de mercado de imóveis,
+                Análise técnica para estimar o valor de mercado do imóvel,
                 apoiando decisões de venda, inventário, regularização ou
-                negociação patrimonial.
+                negociação patrimonial. CNAI 41608.
               </p>
               <a
                 href="https://wa.me/5551995483061"
@@ -996,7 +963,7 @@
             <article class="srv-card">
               <div class="srv-card-ico"><i class="ri-lightbulb-line"></i></div>
               <p class="srv-card-para">Para quem quer tomar a decisão certa</p>
-              <h3>Consultoria Imobiliária</h3>
+              <h3>Consultoria imobiliária</h3>
               <p>
                 Orientação para quem deseja investir, vender melhor, comprar com
                 mais segurança ou entender o potencial de valorização de um
@@ -1016,7 +983,7 @@
                 <i class="ri-file-list-3-line"></i>
               </div>
               <p class="srv-card-para">Para quem tem pendências documentais</p>
-              <h3>Regularização e Orientação Documental</h3>
+              <h3>Orientação documental</h3>
               <p>
                 Apoio na análise e organização da documentação do imóvel,
                 ajudando a evitar problemas e garantir segurança jurídica nas
@@ -1034,7 +1001,7 @@
             <article class="srv-card">
               <div class="srv-card-ico"><i class="ri-funds-line"></i></div>
               <p class="srv-card-para">Para quem quer investir com segurança</p>
-              <h3>Análise para Investimento Imobiliário</h3>
+              <h3>Análise de investimento imobiliário</h3>
               <p>
                 Estudos de viabilidade e análise de mercado para identificar
                 oportunidades com maior potencial de retorno e segurança para o
@@ -1057,7 +1024,7 @@
         <div class="s-container">
           <div class="srv-heading">
             <span class="srv-heading-tag">Como funciona o atendimento</span>
-            <h2>Um Processo Claro e Transparente</h2>
+            <h2>Um processo claro e transparente</h2>
             <p>
               Do primeiro contato até a conclusão da negociação, cada etapa é
               conduzida com organização e profissionalismo.
@@ -1072,8 +1039,8 @@
               </div>
               <h3>Entendimento da necessidade</h3>
               <p>
-                Entendemos seu objetivo para compra, venda, locação ou avaliação
-                do imóvel, mapeando prioridades e expectativas.
+                Mapeamos seu objetivo — compra, venda, locação ou avaliação —
+                identificando prioridades e expectativas.
               </p>
             </div>
             <div class="srv-etapa">
@@ -1101,8 +1068,8 @@
               <div class="srv-etapa-ico"><i class="ri-handshake-line"></i></div>
               <h3>Acompanhamento até a conclusão</h3>
               <p>
-                Acompanhamos todo o processo até a negociação final e
-                encaminhamento das próximas etapas.
+                Acompanhamos todo o processo até a negociação final e o
+                encaminhamento das etapas seguintes.
               </p>
             </div>
           </div>
@@ -1114,13 +1081,13 @@
         <div class="s-container">
           <div class="srv-heading">
             <span class="srv-heading-tag">Diferenciais</span>
-            <h2>Por que Contar com Este Atendimento?</h2>
+            <h2>Por que contar com este atendimento?</h2>
           </div>
 
           <div class="srv-diferenciais">
             <div class="srv-dif">
               <div class="srv-dif-ico"><i class="ri-award-line"></i></div>
-              <span>Experiência no mercado imobiliário</span>
+              <span>Mais de 30 anos no mercado imobiliário</span>
             </div>
             <div class="srv-dif">
               <div class="srv-dif-ico"><i class="ri-tools-line"></i></div>
@@ -1159,8 +1126,8 @@
               <span class="srv-cta-tag">Fale com um especialista</span>
               <h2>Precisa comprar, vender, alugar ou avaliar um imóvel?</h2>
               <p>
-                Fale com um profissional e receba uma orientação clara para o
-                seu caso.
+                Fale com um profissional e receba orientação clara para o seu
+                caso.
               </p>
             </div>
           </div>
@@ -1181,6 +1148,35 @@
         </div>
       </section>
     </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <img src="../img/logo.png" alt="Anselmo Pedroso Imóveis" />
+        <p>
+          © 2026 Anselmo Pedroso Imóveis · CRECI 11540 · Todos os direitos
+          reservados.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Botão WhatsApp flutuante com ícone -->
+    <a
+      href="https://wa.me/5551995483061"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Falar pelo WhatsApp"
+    >
+      <i class="ri-whatsapp-line"></i>
+    </a>
+
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const navMenu = document.getElementById("navMenu");
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", () =>
+          navMenu.classList.toggle("active"),
+        );
+      }
+    </script>
   </body>
 </html>
-D

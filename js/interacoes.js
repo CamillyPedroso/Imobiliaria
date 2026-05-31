@@ -1,6 +1,6 @@
 // ── CONFIGURAÇÃO ─────────────────────────────────────────────────────────────
 // Após publicar o Apps Script como Web App, cole a URL gerada aqui:
-const SHEETS_ENDPOINT = "COLE_AQUI_A_URL_DO_SEU_WEB_APP";
+const SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycbwEUDgOpwG7WpZe6O0pw-JDtiXDwmh2B7zqmLShR5hpiyz78OOtHMLwKGAh6C2dpzkQ/exec";
 
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");

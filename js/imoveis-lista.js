@@ -80,11 +80,9 @@ function renderizarImoveis(imoveis) {
 
 /* ── ATUALIZA BOTÕES × E CHIPS ───────────────────────────────── */
 function sincronizarUI() {
-  // Botões de reset
   resetTipo.style.display = tipoImovel.value ? "flex" : "none";
   resetOperacao.style.display = operacaoImovel.value ? "flex" : "none";
 
-  // Chips: marca como ativo quando coincide com o filtro atual
   document.querySelectorAll(".chip-filtro").forEach((chip) => {
     const matchTipo =
       chip.dataset.tipo && chip.dataset.tipo === tipoImovel.value;
@@ -121,12 +119,6 @@ function filtrarImoveis() {
 }
 
 /* ── HELPERS DE DROPDOWN ─────────────────────────────────────── */
-
-/**
- * Atualiza o estado visual de um dropdown customizado após mudança de valor.
- * @param {string} selectId  — ID do select nativo (ex: "tipoImovel")
- * @param {string} labelPadrao — Texto exibido quando não há seleção
- */
 function sincronizarDropdown(selectId, labelPadrao) {
   const dropdown = document.querySelector(
     `.filtro-custom[data-select="${selectId}"]`,
@@ -138,7 +130,6 @@ function sincronizarDropdown(selectId, labelPadrao) {
   const opcoes = dropdown.querySelectorAll(".filtro-custom-menu button");
   const valor = selectEl ? selectEl.value : "";
 
-  // Atualiza texto do botão
   if (textoEl) {
     if (valor) {
       const opcaoAtiva = dropdown.querySelector(
@@ -152,7 +143,6 @@ function sincronizarDropdown(selectId, labelPadrao) {
     }
   }
 
-  // Marca a opção selecionada
   opcoes.forEach((btn) => {
     btn.classList.toggle("selecionado", btn.dataset.value === valor);
   });
@@ -171,7 +161,7 @@ resetOperacao.addEventListener("click", () => {
   filtrarImoveis();
 });
 
-/* ── LISTENERS NATIVOS (mantidos para compatibilidade) ────────── */
+/* ── LISTENERS NATIVOS ────────────────────────────────────────── */
 buscaImoveis.addEventListener("input", filtrarImoveis);
 tipoImovel.addEventListener("change", filtrarImoveis);
 operacaoImovel.addEventListener("change", filtrarImoveis);
@@ -187,26 +177,22 @@ document.querySelectorAll(".filtro-custom").forEach((dropdown) => {
 
   if (!selectReal || !botao || !textoEl) return;
 
-  // Abre / fecha ao clicar no botão
   botao.addEventListener("click", (e) => {
     e.stopPropagation();
     const estaAberto = dropdown.classList.contains("ativo");
 
-    // Fecha todos
     document.querySelectorAll(".filtro-custom").forEach((d) => {
       d.classList.remove("ativo");
       const btn = d.querySelector(".filtro-custom-btn");
       if (btn) btn.setAttribute("aria-expanded", "false");
     });
 
-    // Abre este (se estava fechado)
     if (!estaAberto) {
       dropdown.classList.add("ativo");
       botao.setAttribute("aria-expanded", "true");
     }
   });
 
-  // Seleciona uma opção
   opcoes.forEach((opcao) => {
     opcao.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -226,7 +212,6 @@ document.querySelectorAll(".filtro-custom").forEach((dropdown) => {
   });
 });
 
-// Fecha qualquer dropdown aberto ao clicar fora
 document.addEventListener("click", () => {
   document.querySelectorAll(".filtro-custom").forEach((d) => {
     d.classList.remove("ativo");
@@ -235,7 +220,6 @@ document.addEventListener("click", () => {
   });
 });
 
-// Fecha com Escape
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     document.querySelectorAll(".filtro-custom").forEach((d) => {

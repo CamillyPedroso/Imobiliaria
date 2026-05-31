@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Imóveis | Imóvel</title>
+    <title>
+      Imóveis em Guaíba e Região | Anselmo Pedroso Imóveis — CRECI 11540
+    </title>
+    <meta
+      name="description"
+      content="Imóveis à venda e para locação em Guaíba, Porto Alegre e região. Casas, terrenos e imóveis comerciais com atendimento de Anselmo Pedroso, corretor CRECI 11540."
+    />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
@@ -14,8 +20,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="../css/front.css?v=2" />
-    <link rel="stylesheet" href="../css/imoveis-page.css?v=1" />
+    <link rel="stylesheet" href="../css/front.css?v=3" />
     <link rel="stylesheet" href="../css/imoveis-filtros.css?v=1" />
   </head>
 
@@ -24,7 +29,7 @@
     <header class="header">
       <div class="container header-content">
         <a href="../index.html" class="logo-area">
-          <img src="../img/logo.png" alt="Logo Imóvel" />
+          <img src="../img/logo.png" alt="Anselmo Pedroso Imóveis" />
         </a>
 
         <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
@@ -32,6 +37,9 @@
         </button>
 
         <nav class="nav" id="navMenu">
+          <a href="../index.html">
+            <i class="ri-arrow-left-line"></i> Início
+          </a>
           <a href="imoveis.html" class="nav-ativo">
             <i class="ri-home-4-line"></i> Imóveis
           </a>
@@ -65,15 +73,15 @@
               Encontre o imóvel ideal para morar, investir ou empreender
             </h1>
             <p class="hero-imoveis-sub">
-              Veja casas, terrenos e imóveis comerciais representados por
-              Anselmo Pedroso, corretor de imóveis, perito avaliador e técnico
-              em edificações.
+              Casas, terrenos e imóveis comerciais em Guaíba e Porto Alegre,
+              representados por Anselmo Pedroso — corretor de imóveis, perito
+              avaliador e técnico em edificações.
             </p>
             <div class="hero-imoveis-chips">
               <span><i class="ri-home-4-line"></i> Venda</span>
               <span><i class="ri-key-line"></i> Locação</span>
               <span><i class="ri-bar-chart-line"></i> Avaliação</span>
-              <span><i class="ri-shield-check-line"></i> CRECI ativo</span>
+              <span><i class="ri-shield-check-line"></i> CRECI 11540</span>
             </div>
           </div>
 
@@ -84,20 +92,20 @@
             </div>
             <ul class="card-atendimento-lista">
               <li>
-                <i class="ri-map-pin-line"></i
-                ><span>Porto Alegre, Guaíba e região</span>
+                <i class="ri-map-pin-line"></i>
+                <span>Porto Alegre, Guaíba e região</span>
               </li>
               <li>
-                <i class="ri-home-smile-line"></i
-                ><span>Venda, locação e avaliação</span>
+                <i class="ri-home-smile-line"></i>
+                <span>Venda, locação e avaliação</span>
               </li>
               <li>
-                <i class="ri-auction-line"></i
-                ><span>Imóveis selecionados na carteira</span>
+                <i class="ri-auction-line"></i>
+                <span>Imóveis selecionados na carteira</span>
               </li>
               <li>
-                <i class="ri-time-line"></i
-                ><span>Resposta rápida pelo WhatsApp</span>
+                <i class="ri-time-line"></i>
+                <span>Resposta rápida pelo WhatsApp</span>
               </li>
             </ul>
             <a
@@ -114,9 +122,7 @@
       <!-- ===== FILTROS ===== -->
       <section class="filtros-imoveis-novo">
         <div class="container">
-          <!-- Barra principal: busca + 2 dropdowns -->
           <div class="filtros-inner">
-            <!-- Busca por texto -->
             <div class="filtro-busca-wrapper">
               <i class="ri-search-line filtro-icone-busca"></i>
               <input
@@ -128,9 +134,7 @@
               />
             </div>
 
-            <!-- Dropdown: Tipo de imóvel -->
             <div class="filtro-select-wrapper">
-              <!-- Select nativo oculto — mantém compatibilidade com o JS de filtro -->
               <select
                 id="tipoImovel"
                 class="filtro-select-real"
@@ -145,7 +149,6 @@
                 <option value="comercial">Comercial</option>
               </select>
 
-              <!-- UI customizada -->
               <div class="filtro-custom" data-select="tipoImovel">
                 <button
                   class="filtro-custom-btn"
@@ -198,9 +201,7 @@
               </button>
             </div>
 
-            <!-- Dropdown: Comprar ou alugar -->
             <div class="filtro-select-wrapper">
-              <!-- Select nativo oculto -->
               <select
                 id="operacaoImovel"
                 class="filtro-select-real"
@@ -212,7 +213,6 @@
                 <option value="Aluguel">Aluguel</option>
               </select>
 
-              <!-- UI customizada -->
               <div class="filtro-custom" data-select="operacaoImovel">
                 <button
                   class="filtro-custom-btn"
@@ -256,9 +256,7 @@
               </button>
             </div>
           </div>
-          <!-- /filtros-inner -->
 
-          <!-- Chips rápidos -->
           <div class="filtros-chips">
             <button class="chip-filtro" data-tipo="casa">
               <i class="ri-home-line"></i> Casa
@@ -290,8 +288,11 @@
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
       <div class="container footer-content">
-        <img src="../img/logo.png" alt="Logo Imóvel" />
-        <p>© 2026 Anselmo Pedroso Imóveis. Todos os direitos reservados.</p>
+        <img src="../img/logo.png" alt="Anselmo Pedroso Imóveis" />
+        <p>
+          © 2026 Anselmo Pedroso Imóveis · CRECI 11540 · Todos os direitos
+          reservados.
+        </p>
       </div>
     </footer>
 

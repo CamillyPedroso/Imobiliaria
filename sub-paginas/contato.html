@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contato | Imóvel</title>
+    <title>Contato | Anselmo Pedroso Imóveis — CRECI 11540</title>
+    <meta
+      name="description"
+      content="Entre em contato com Anselmo Pedroso Imóveis. Atendimento para compra, venda, locação e avaliação de imóveis em Guaíba, Porto Alegre e região. CRECI 11540."
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -151,7 +155,7 @@
         box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
       }
 
-      /* ── GRID DE CONTATOS (e-mail, redes, área) ── */
+      /* ── GRID DE CONTATOS ── */
       .ct-cards-section {
         padding: 56px 0 80px;
         background: var(--cream);
@@ -229,7 +233,6 @@
         transform: translateY(-2px);
       }
 
-      /* ícones coloridos das redes sociais */
       .redes-icones {
         display: flex;
         gap: 16px;
@@ -279,7 +282,6 @@
         color: #fff;
       }
 
-      /* mapa RS */
       .ct-mapa {
         margin-top: 18px;
       }
@@ -498,6 +500,29 @@
         box-shadow: 0 12px 28px rgba(214, 168, 79, 0.35);
       }
 
+      /* ── BOTÃO WHATSAPP FLUTUANTE ── */
+      .whatsapp-float {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        background: #25d366;
+        color: #fff;
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+        z-index: 60;
+        text-decoration: none;
+        transition: transform 0.2s;
+      }
+      .whatsapp-float:hover {
+        transform: scale(1.08);
+      }
+
       /* ── RESPONSIVO ── */
       @media (max-width: 980px) {
         .ct-wpp-card {
@@ -544,7 +569,7 @@
     <header class="header">
       <div class="container header-content">
         <a href="../index.html" class="logo-area">
-          <img src="../img/logo.png" alt="Logo Imóvel" />
+          <img src="../img/logo.png" alt="Anselmo Pedroso Imóveis" />
         </a>
 
         <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
@@ -552,6 +577,7 @@
         </button>
 
         <nav class="nav" id="navMenu">
+          <a href="../index.html"><i class="ri-arrow-left-line"></i> Início</a>
           <a href="imoveis.html"><i class="ri-home-4-line"></i> Imóveis</a>
           <a href="servicos.html"
             ><i class="ri-briefcase-4-line"></i> Serviços</a
@@ -585,7 +611,7 @@
           </div>
           <p style="margin-top: 20px">
             Atendimento consultivo para compra, venda, locação,<br />
-            avaliação e orientação imobiliária no Rio Grande do Sul.
+            avaliação e orientação imobiliária em Guaíba, Porto Alegre e região.
           </p>
         </div>
       </section>
@@ -613,7 +639,7 @@
                 class="btn-wpp"
               >
                 <i class="ri-whatsapp-line"></i>
-                WhatsApp 1: 51 99548-3061
+                (51) 99548-3061
               </a>
               <a
                 href="https://wa.me/5551992905834"
@@ -621,7 +647,7 @@
                 class="btn-wpp"
               >
                 <i class="ri-whatsapp-line"></i>
-                WhatsApp 2: 51 99290-5834
+                (51) 99290-5834
               </a>
             </div>
           </div>
@@ -635,16 +661,14 @@
             <!-- E-mail -->
             <div class="ct-card">
               <div class="ct-card-topo">
-                <div class="ct-card-icon">
-                  <i class="ri-mail-line"></i>
-                </div>
+                <div class="ct-card-icon"><i class="ri-mail-line"></i></div>
                 <h3>E-mail</h3>
               </div>
               <p>
                 Envie sua solicitação, proposta ou documentação para análise.
               </p>
               <div class="ct-card-botoes">
-                <a href="mailto: anselmopedroso@gmail.com" class="btn-mail">
+                <a href="mailto:anselmopedroso@gmail.com" class="btn-mail">
                   <i class="ri-mail-send-line"></i>
                   anselmopedroso@gmail.com
                 </a>
@@ -654,14 +678,12 @@
             <!-- Redes sociais -->
             <div class="ct-card">
               <div class="ct-card-topo">
-                <div class="ct-card-icon">
-                  <i class="ri-share-line"></i>
-                </div>
+                <div class="ct-card-icon"><i class="ri-share-line"></i></div>
                 <h3>Redes sociais</h3>
               </div>
               <p>
-                Acompanhe mais sobre imóveis, novidades e conteúdos da Anselmo
-                Pedroso Imobiliária.
+                Acompanhe novidades, imóveis e conteúdos de Anselmo Pedroso
+                Imóveis.
               </p>
               <div class="redes-icones">
                 <a
@@ -669,9 +691,9 @@
                   target="_blank"
                   class="rede-link"
                 >
-                  <span class="rede-ico instagram">
-                    <i class="ri-instagram-line"></i>
-                  </span>
+                  <span class="rede-ico instagram"
+                    ><i class="ri-instagram-line"></i
+                  ></span>
                   Instagram
                 </a>
                 <a
@@ -679,9 +701,9 @@
                   target="_blank"
                   class="rede-link"
                 >
-                  <span class="rede-ico facebook">
-                    <i class="ri-facebook-fill"></i>
-                  </span>
+                  <span class="rede-ico facebook"
+                    ><i class="ri-facebook-fill"></i
+                  ></span>
                   Facebook
                 </a>
                 <a
@@ -689,9 +711,9 @@
                   target="_blank"
                   class="rede-link"
                 >
-                  <span class="rede-ico facebook-page">
-                    <i class="ri-global-line"></i>
-                  </span>
+                  <span class="rede-ico facebook-page"
+                    ><i class="ri-global-line"></i
+                  ></span>
                   Página do<br />Facebook
                 </a>
               </div>
@@ -707,14 +729,12 @@
               </div>
               <p>
                 Atendimento voltado ao mercado imobiliário do Rio Grande do Sul,
-                com foco em compra, venda, locação, avaliação e consultoria.
+                com foco em Guaíba, Porto Alegre e região metropolitana.
               </p>
-
-              <!-- Mapa RS -->
               <div class="ct-mapa">
                 <img
                   src="../img/mapa-rs.png"
-                  alt="Mapa do Rio Grande do Sul com destaque em Porto Alegre"
+                  alt="Mapa do Rio Grande do Sul — área de atendimento de Anselmo Pedroso Imóveis"
                 />
               </div>
             </div>
@@ -835,7 +855,7 @@
             <span class="ct-cta-tag">Vamos conversar?</span>
             <h2>Vamos conversar sobre<br />o seu imóvel?</h2>
             <p>
-              Seja para comprar, vender, alugar ou avaliar, conte com uma
+              Seja para comprar, vender, alugar ou avaliar — conte com uma
               orientação experiente para tomar a melhor decisão.
             </p>
           </div>
@@ -845,19 +865,30 @@
             class="btn-cta-wpp"
           >
             <i class="ri-whatsapp-line"></i>
-            Falar com a imobiliária
+            Falar com Anselmo Pedroso
           </a>
         </div>
       </section>
     </main>
 
+    <footer class="footer">
+      <div class="container footer-content">
+        <img src="../img/logo.png" alt="Anselmo Pedroso Imóveis" />
+        <p>
+          © 2026 Anselmo Pedroso Imóveis · CRECI 11540 · Todos os direitos
+          reservados.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Botão WhatsApp flutuante com ícone -->
     <a
       href="https://wa.me/5551995483061"
       class="whatsapp-float"
       target="_blank"
       aria-label="Falar pelo WhatsApp"
     >
-      WhatsApp
+      <i class="ri-whatsapp-line"></i>
     </a>
 
     <script>
