@@ -12,7 +12,7 @@ const resetOperacao = document.getElementById("resetOperacao");
 
 /* ── Labels padrão de cada filtro ────────────────────────────── */
 const LABEL_TIPO = "Tipo de imóvel";
-const LABEL_OPERACAO = "Comprar ou alugar";
+const LABEL_OPERACAO = "Comprar ou locar";
 
 /* ── MONTA A IMAGEM DO CARD ──────────────────────────────────── */
 function montarImagem(imovel) {
@@ -53,7 +53,7 @@ function renderizarImoveis(imoveis) {
     <article class="card-imovel">
       <a href="${imovel.pagina}" class="imagem-imovel">
         ${montarImagem(imovel)}
-        <span class="tag-operacao">${imovel.operacao}</span>
+        <span class="tag-operacao">${imovel.operacao === "Venda" ? "Compra" : imovel.operacao}</span>
       </a>
       <div class="conteudo-card-imovel">
         <div class="linha-card">

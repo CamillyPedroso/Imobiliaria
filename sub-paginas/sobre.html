@@ -205,7 +205,72 @@
         font-size: 0.86rem;
         line-height: 1.6;
       }
+      /* === DROPDOWN SOBRE === */
+      .nav-dropdown {
+        position: relative;
+      }
 
+      .nav-dropdown-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font: inherit;
+        color: inherit;
+        padding: 0;
+      }
+
+      .nav-dropdown-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 0;
+        background: #fff;
+        border: 1px solid var(--s-border);
+        border-radius: 12px;
+        padding: 8px;
+        min-width: 200px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+      }
+
+      .nav-dropdown-menu.open {
+        display: block;
+      }
+
+      .nav-dropdown-menu a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        color: var(--s-navy);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .nav-dropdown-menu a:hover {
+        background: var(--s-cream);
+      }
+      /* itens internos do dropdown */
+      .nav-dropdown-menu a span {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+      }
+
+      .nav-dropdown-menu a strong {
+        font-size: 0.88rem;
+        font-weight: 600;
+      }
+
+      .nav-dropdown-menu a small {
+        font-size: 0.75rem;
+        color: #888;
+        font-weight: 400;
+      }
       /* ── Seção de serviços ── */
       .sobre-servicos {
         padding: 90px 0;
@@ -249,13 +314,32 @@
 
         <nav class="nav" id="navMenu">
           <a href="../index.html"><i class="ri-arrow-left-line"></i> Início</a>
-          <a href="imoveis.html"><i class="ri-home-4-line"></i> Imóveis</a>
-          <a href="servicos.html">
-            <i class="ri-briefcase-4-line"></i> Serviços
-          </a>
-          <a href="sobre.html" style="background: var(--navy); color: #fff">
-            <i class="ri-user-3-line"></i> Sobre
-          </a>
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-btn">
+              <i class="ri-building-4-line"></i> Imóveis
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="comprar.html">
+                <i class="ri-home-heart-line"></i>
+                <span
+                  ><strong>Comprar</strong><small>Imóveis à venda</small></span
+                >
+              </a>
+              <a href="locar.html">
+                <i class="ri-key-line"></i>
+                <span
+                  ><strong>Locar</strong
+                  ><small>Imóveis para alugar</small></span
+                >
+              </a>
+            </div>
+          </div>
+          <a href="servicos.html"
+            ><i class="ri-briefcase-4-line"></i> Serviços</a
+          >
+          <a href="sobre.html" style="background: var(--navy); color: #fff"
+            ><i class="ri-user-3-line"></i> Sobre</a
+          >
           <a href="contato.html"><i class="ri-phone-line"></i> Contato</a>
         </nav>
 
@@ -265,7 +349,7 @@
           target="_blank"
         >
           <i class="ri-whatsapp-line"></i>
-          Falar com corretor
+          Falar com o corretor
         </a>
       </div>
     </header>
@@ -487,7 +571,7 @@
             <span>Pronto para o próximo passo?</span>
             <h2>Entre em contato e receba atendimento personalizado.</h2>
             <p>
-              Seja para comprar, vender, alugar ou avaliar — a orientação certa
+              Seja para comprar, vender, alocar ou avaliar — a orientação certa
               faz toda a diferença na sua decisão.
             </p>
           </div>
@@ -525,9 +609,22 @@
       const menuToggle = document.getElementById("menuToggle");
       const navMenu = document.getElementById("navMenu");
       if (menuToggle && navMenu) {
-        menuToggle.addEventListener("click", () => {
-          navMenu.classList.toggle("active");
+        menuToggle.addEventListener("click", () =>
+          navMenu.classList.toggle("active"),
+        );
+      }
+
+      // Dropdown Imóveis
+      const dropBtn = document.querySelector(".nav-dropdown-btn");
+      const dropMenu = document.querySelector(".nav-dropdown-menu");
+      if (dropBtn && dropMenu) {
+        dropBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          dropMenu.classList.toggle("open");
         });
+        document.addEventListener("click", () =>
+          dropMenu.classList.remove("open"),
+        );
       }
     </script>
   </body>

@@ -1134,7 +1134,8 @@ textarea:focus {
   box-shadow: 0 12px 30px rgba(6, 29, 45, 0.08);
 }
 
-.nav a {
+.nav a,
+.nav .nav-dropdown-btn {
   min-height: 46px;
   padding: 0 22px;
   border-radius: 999px;
@@ -1149,7 +1150,8 @@ textarea:focus {
   position: relative;
 }
 
-.nav a:not(:last-child)::after {
+.nav a:not(:last-child)::after,
+.nav .nav-dropdown:not(:last-child) .nav-dropdown-btn::after {
   content: "";
   position: absolute;
   right: -3px;
@@ -1158,13 +1160,15 @@ textarea:focus {
   background: rgba(200, 164, 93, 0.45);
 }
 
-.nav a i {
+.nav a i,
+.nav .nav-dropdown-btn i {
   color: var(--gold-dark);
   font-size: 1.35rem;
   font-weight: 400;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav .nav-dropdown-btn:hover {
   background: var(--navy);
   color: var(--white);
   transform: translateY(-1px);

@@ -30,3 +30,4 @@ Use o formato com codigo do pais e DDD, sem espacos, parenteses ou tracos.
 Ok
 
 11/05/2026
+imoveis-dados.js - onde é cadastrado os imóveis

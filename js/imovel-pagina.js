@@ -259,7 +259,7 @@
                href="${wppBase}${wppMsg}"
                target="_blank">
               <i class="ri-whatsapp-line"></i>
-              Falar com corretor
+              Falar com o corretor
             </a>
             <a class="btn-agendar-visita"
                href="${wppBase}${wppVisita}"
