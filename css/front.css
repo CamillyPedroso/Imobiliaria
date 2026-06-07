@@ -153,6 +153,9 @@ a {
   height: 46px;
   border-radius: 12px;
   cursor: pointer;
+  position: relative;
+  z-index: 100;
+  pointer-events: all;
 }
 
 .hero {
