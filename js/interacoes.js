@@ -57,12 +57,6 @@ const properties = [
   },
 ];
 
-if (menuToggle && navMenu) {
-  menuToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-  });
-}
-
 function renderProperties(lista) {
   if (!propertyList) return;
 

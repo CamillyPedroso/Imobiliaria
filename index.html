@@ -927,7 +927,7 @@
         color: var(--muted);
         font-weight: 400;
       }
-      .nav-dropdown.aberto .nav-dropdown-menu {
+      .nav-dropdown.ativo .nav-dropdown-menu {
         display: block;
       }
     </style>
@@ -1620,7 +1620,7 @@
           e.stopPropagation();
           dd.classList.toggle("ativo");
         });
-        document.addEventListener("click", () => dd.classList.remove("aberto"));
+        document.addEventListener("click", () => dd.classList.remove("ativo"));
       })();
       // ── Menu mobile ──────────────────────────────────
       (function () {
