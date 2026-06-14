@@ -942,7 +942,7 @@
         </a>
 
         <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
-          <i class="ri-menu-line"></i>
+          ☰
         </button>
 
         <nav class="nav" id="navMenu">
@@ -1621,20 +1621,6 @@
           dd.classList.toggle("ativo");
         });
         document.addEventListener("click", () => dd.classList.remove("ativo"));
-      })();
-      // ── Menu mobile ──────────────────────────────────
-      (function () {
-        const toggle = document.getElementById("menuToggle");
-        const nav = document.getElementById("navMenu");
-        if (!toggle || !nav) return;
-        toggle.addEventListener("click", () => nav.classList.toggle("active"));
-        nav
-          .querySelectorAll("a")
-          .forEach((link) =>
-            link.addEventListener("click", () =>
-              nav.classList.remove("active"),
-            ),
-          );
       })();
 
       // ── Formulário → WhatsApp ─────────────────────────

@@ -56,7 +56,11 @@ const properties = [
     valor: "R$ 1.900/mês",
   },
 ];
-
+if (menuToggle && navMenu) {
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+}
 function renderProperties(lista) {
   if (!propertyList) return;
 
