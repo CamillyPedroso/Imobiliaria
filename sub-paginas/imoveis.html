@@ -388,6 +388,15 @@
     <script src="../js/imoveis-lista.js"></script>
 
     <script>
+      // Força filtro Locação ao carregar
+      window.addEventListener("DOMContentLoaded", () => {
+        const sel = document.getElementById("operacaoImovel");
+        if (sel) {
+          sel.value = "Locação";
+          sincronizarDropdown("operacaoImovel", "Comprar ou locar");
+          filtrarImoveis();
+        }
+      });
       const dropBtn = document.querySelector(".nav-dropdown-btn");
       const dropMenu = document.querySelector(".nav-dropdown-menu");
       if (dropBtn && dropMenu) {
