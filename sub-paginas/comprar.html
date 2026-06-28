@@ -100,12 +100,6 @@
             </button>
             <div class="nav-dropdown-menu">
               <a href="imoveis.html">
-                <i class="ri-home-heart-line"></i>
-                <span
-                  ><strong>Comprar</strong><small>Imóveis à venda</small></span
-                >
-              </a>
-              <a href="imoveis.html">
                 <i class="ri-key-line"></i>
                 <span
                   ><strong>Locar</strong><small>Imóveis para locar</small></span
@@ -386,13 +380,23 @@
         );
       }
 
-      // Força filtro Venda ao carregar
+      // Oculta imóveis de venda temporariamente
       window.addEventListener("DOMContentLoaded", () => {
-        const sel = document.getElementById("operacaoImovel");
-        if (sel) {
-          sel.value = "Venda";
-          sincronizarDropdown("operacaoImovel", "Comprar ou locar");
-          filtrarImoveis();
+        const lista = document.getElementById("listaImoveis");
+        const filtros = document.querySelector(".filtros-imoveis-novo");
+        if (filtros) filtros.style.display = "none";
+        if (lista) {
+          lista.innerHTML = `
+      <div class="resultado-vazio" style="text-align:center; padding: 60px 20px;">
+        <h3 style="font-size:1.3rem; margin-bottom:12px;">Imóveis em breve</h3>
+        <p style="color:#666;">Nossa carteira de imóveis à venda está sendo atualizada.<br>
+        Entre em contato para consultar disponibilidade.</p>
+        <a href="https://wa.me/5551995483061" target="_blank"
+           style="display:inline-block; margin-top:20px; background:#25d366; color:#fff;
+                  padding:12px 24px; border-radius:999px; text-decoration:none; font-weight:600;">
+          <i class="ri-whatsapp-line"></i> Falar com o corretor
+        </a>
+      </div>`;
         }
       });
     </script>
